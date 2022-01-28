@@ -18,7 +18,7 @@ func main() {
 		string += " " + v
 	}
 
-	// Checking whether str contain "\n" or not ---> executing the ascii-art
+	// Checking whether string contain "\n" or not ---> executing the ascii-art
 	previous := 'a'
 	manylines := false
 	for _, v := range string {
