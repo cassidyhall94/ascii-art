@@ -18,41 +18,41 @@ func main() {
 		str += " " + v
 	}
 
-	// 2. Checking whether str contain "\n" or not ---> executing the ascii-art
-	prev := 'a'
-	severallines := false
+	// Checking whether str contain "\n" or not ---> executing the ascii-art
+	previous := 'a'
+	manylines := false
 	for _, v := range str {
-		if v == 'n' && prev == '\\' {
-			severallines = true
+		if v == 'n' && previous == '\\' {
+			manylines = true
 		}
-		prev = v
+		previous = v
 	}
-	// 3. Writing text line by line into res
-	res := ""
-	if severallines {
+	// Writing text line by line into result
+	result := ""
+	if manylines {
 		args := strings.Split(str, "\\n")
 		for _, word := range args {
 			for i := 0; i < 8; i++ {
-				for _, letter := range word {
-					res += GetLine(1 + int(letter-' ')*9 + i)
+				for _, char := range word {
+					result += ReturnLine(1 + int(char-' ')*9 + i)
 				}
-				fmt.Println(res)
-				res = ""
+				fmt.Println(result)
+				result = ""
 			}
 		}
 
 	} else {
 		for i := 0; i < 8; i++ {
-			for _, letter := range str {
-				res += GetLine(1 + int(letter-' ')*9 + i)
+			for _, char := range str {
+				result += ReturnLine(1 + int(char-' ')*9 + i)
 			}
-			fmt.Println(res)
-			res = ""
+			fmt.Println(result)
+			result = ""
 		}
 	}
 }
 
-func GetLine(num int) string {
+func ReturnLine(num int) string {
 	str := ""
 	f, e := os.Open("standard.txt")
 	if e != nil {
